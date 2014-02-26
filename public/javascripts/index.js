@@ -35,6 +35,12 @@ $(document).ready(function(){
             drawGraph(data);
         });
     });
+
+    $('#txtResourceUri').keydown(function(event){
+        if(event.keyCode==13){
+            $('#btnResourceURI').trigger('click');
+        }
+    });
 });
 
 function drawGraph(graph){
