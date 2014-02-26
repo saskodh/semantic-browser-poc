@@ -1,16 +1,67 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="/public/bootstrap/css/bootstrap.min.css">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="/public/bootstrap/css/bootstrap-theme.min.css">
+
         <script src="/public/javascripts/jquery.js"></script>
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="/public/bootstrap/js/bootstrap.min.js"></script>
+
+        <script src="/public/javascripts/d3.v3.min.js"></script>
+
         <script src="/public/javascripts/index.js"></script>
     </head>
-    <body>
-        <div>
-            Resource URI: <input type="text" id="txtResourceURI" style="width: 600px"/>
-            <button type="button" id="btnResourceURI">Go!</button>
+    <body style="margin: 20px">
+        <div id="header"></div>
+        <div id="settings">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label for="txtGraphUri" class="col-sm-1 control-label">Graph URI</label>
+                            <div class="col-sm-10">
+                                <input type="text" id="txtGraphUri" class="form-control input-sm" placeholder="Insert the default graph URI"/>
+                            </div>
+                            <div class="col-sm-1"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtResourceUri" class="col-sm-1 control-label">Resource</label>
+                            <div class="col-sm-10">
+                                <div class="input-group">
+                                    <input type="text" id="txtResourceUri" class="form-control input-sm" placeholder="Search for a resource">
+                                    <span class="input-group-btn">
+                                    <button class="btn btn-default btn-sm" type="button" id="btnResourceURI">Go!</button>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-sm-1"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div id="visualization">
+        <div id="content" class="row">
+            <div id="info" class="col-lg-4">
+                <div class="panel panel-default">
+                    <div class="panel-body" style="height: 420px">
+                        info
+                    </div>
+                </div>
+            </div>
+            <div id="visualization" class="col-md-8">
+                <div class="panel panel-default">
+                    <div class="panel-body" style="height: 420px">
 
+                    </div>
+                </div>
+            </div>
         </div>
+
+        <div id="footer"></div>
     </body>
 </html>
