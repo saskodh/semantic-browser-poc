@@ -15,11 +15,6 @@ Controller.indexGet = function(request, response){
     response.render('index', { title: 'Express' });
 };
 
-Controller.indexPost = function(request, response){
-
-    response.render('index', {});
-};
-
 Controller.resource = function(req, res){
     if(req.query.uri){
         console.log(req.query.uri);
@@ -29,21 +24,92 @@ Controller.resource = function(req, res){
             store.execute(url, function() {
 
                 store.graph("http://example.org/resource", function(success, graph){
-                    console.log(graph);
+                    //console.log(graph);
 
-                    if(success){
-                        graph.filter(function(triple, thisGraph){
-                            return true;
-                        })
+                    var query = "SELECT * WHERE {<" + req.query.uri + "> ?property ?object}";
 
-                        res.json(graph.toArray());
-                    }
-                    /*for(var i=0; i<graph.triples.length; i++){
-                     console.log('------------triple------------');
-                     console.log('    '+ graph.triples[i].subject);
-                     console.log('    '+ graph.triples[i].predicate);
-                     console.log('    '+ graph.triples[i].object);
-                     }*/
+                    store.execute(query, ["http://example.org/resource"], [], function(success, results){
+                            if(success) {
+                            // process results
+                            /*
+                            *   oblikot na rezultatite
+                            [
+                                {
+                                    property: {
+                                        token: 'uri',
+                                        value: 'http://purl.org/dc/terms/subject'
+                                    },
+                                    object: {
+                                        token: 'uri',
+                                        value: 'http://dbpedia.org/resource/Category:Fellows_of_the_American_Academy_of_Arts_and_Sciences'
+                                    }
+                                },
+                                 {
+                                    property: {
+                                        token: 'uri',
+                                        value: 'http://www.w3.org/2000/01/rdf-schema#label'
+                                    },
+                                    object: {
+                                        token: 'literal',
+                                        value: 'Woody Allen', lang: 'fr'
+                                    }
+                                }
+                            ]
+                            *
+                            * */
+                            console.log(results);
+
+                            var nodes = [];
+                            var links = [];
+                            var literals = [];
+
+                            var mainNode = {
+                                name: req.query.uri,
+                                attributes: results,
+                                group: 0
+                            };
+                            nodes.push(mainNode);
+
+                            for(var i=0; i<results.length; i++){
+                                if('literal' == results[i].object.token){
+                                    var literal = {
+                                        name: results[i].property.value,
+                                        value: results[i].object.value
+                                    }
+
+                                    literals.push(literal);
+                                }
+
+                                if('uri' == results[i].object.token){
+                                    var node = {
+                                        name: results[i].object.value,
+                                        attributes: false,
+                                        group: results[i].property.value
+                                    };
+
+                                    nodes.push(node);
+
+                                    var link = {
+                                        "source": 0,
+                                        "target": nodes.length-1,
+                                        "value": 10,
+                                        name: results[i].property.value
+                                    }
+                                    links.push(link);
+                                }
+                            }
+
+                            //return the response
+                            var response = {
+                                "nodes": nodes,
+                                "links": links,
+                                "literals": literals
+                            }
+                            res.json(response);
+                        }else {
+                            console.log("errrorr");
+                        }
+                    });
                 });
             });
         });

@@ -1,5 +1,5 @@
 body {
-  padding: 50px;
+  padding: 20px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -15,4 +15,32 @@ a {
 .link {
     stroke: #999;
     stroke-opacity: .6;
+}
+
+#info .panel-body {
+    overflow: auto;
+}
+
+.literalTemplate {
+    border-top-style: solid;
+    padding: 5px;
+}
+
+.literalTemplate span {
+    font-weight: bold;
+}
+
+.literalTemplate p {
+    padding-top: 5px;
+}
+
+#loader {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color:#ffffff;
+    opacity:0.6;
+}
+#loader img {
+    position: absolute;
 }

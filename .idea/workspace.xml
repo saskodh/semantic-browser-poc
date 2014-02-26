@@ -4,12 +4,13 @@
     <list default="true" id="20f45183-17f8-4fdc-9344-ee6d67ee10be" name="Default" comment="" />
     <ignored path="SemanticGraphBrowser.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/index.ejs" changelist="20f45183-17f8-4fdc-9344-ee6d67ee10be" time="1393406039521" ignored="false" />
+    <file path="/index.ejs" changelist="20f45183-17f8-4fdc-9344-ee6d67ee10be" time="1393428568899" ignored="false" />
     <file path="/app.js" changelist="20f45183-17f8-4fdc-9344-ee6d67ee10be" time="1393405809938" ignored="false" />
-    <file path="/Controller.js" changelist="20f45183-17f8-4fdc-9344-ee6d67ee10be" time="1393369407449" ignored="false" />
+    <file path="/Controller.js" changelist="20f45183-17f8-4fdc-9344-ee6d67ee10be" time="1393418732913" ignored="false" />
     <file path="$PROJECT_DIR$/../RealTimeGaming/app.js" changelist="20f45183-17f8-4fdc-9344-ee6d67ee10be" time="1391370990990" ignored="false" />
-    <file path="/index.js" changelist="20f45183-17f8-4fdc-9344-ee6d67ee10be" time="1393406711545" ignored="false" />
+    <file path="/index.js" changelist="20f45183-17f8-4fdc-9344-ee6d67ee10be" time="1393430314128" ignored="false" />
     <file path="/miserables.js" changelist="20f45183-17f8-4fdc-9344-ee6d67ee10be" time="1393405719577" ignored="false" />
+    <file path="/style.css" changelist="20f45183-17f8-4fdc-9344-ee6d67ee10be" time="1393429884651" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,7 +33,7 @@
       <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="34" selection-start="720" selection-end="720" vertical-scroll-proportion="0.0">
+            <state line="85" column="38" selection-start="2407" selection-end="2833" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -41,9 +42,8 @@
       <file leaf-file-name="index.ejs" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/index.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="52" column="31" selection-start="2462" selection-end="2462" vertical-scroll-proportion="-2.2307692">
+            <state line="80" column="66" selection-start="5219" selection-end="5219" vertical-scroll-proportion="-5.3846154">
               <folding>
-                <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -51,21 +51,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="style.css" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/stylesheets/style.css">
+      <file leaf-file-name="index.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/javascripts/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="24" selection-start="215" selection-end="215" vertical-scroll-proportion="0.0">
+            <state line="83" column="26" selection-start="2276" selection-end="2276" vertical-scroll-proportion="0.55737704">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/public/javascripts/index.js">
+      <file leaf-file-name="miserables.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/miserables.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="60" column="30" selection-start="1711" selection-end="1711" vertical-scroll-proportion="0.3715847">
+            <state line="90" column="41" selection-start="3309" selection-end="3342" vertical-scroll-proportion="0.0">
               <folding>
-                <element signature="e#227#953#0" expanded="false" />
+                <element signature="e#0#155#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -74,7 +74,18 @@
       <file leaf-file-name="Controller.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/Controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="94" selection-start="701" selection-end="701" vertical-scroll-proportion="0.0">
+            <state line="86" column="72" selection-start="3621" selection-end="3621" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="e#1103#2369#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="style.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/stylesheets/style.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="44" column="23" selection-start="582" selection-end="582" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -94,11 +105,11 @@
         <option value="$PROJECT_DIR$/routes/lib/rdf2json/node-rdf2json.js" />
         <option value="$PROJECT_DIR$/routes/lib/vendor/node-o3-xml/o3.js" />
         <option value="$PROJECT_DIR$/node_modules/rdfstore/index.js" />
-        <option value="$PROJECT_DIR$/routes/Controller.js" />
         <option value="$PROJECT_DIR$/routes/miserables.js" />
         <option value="$PROJECT_DIR$/app.js" />
-        <option value="$PROJECT_DIR$/public/stylesheets/style.css" />
+        <option value="$PROJECT_DIR$/routes/Controller.js" />
         <option value="$PROJECT_DIR$/views/index.ejs" />
+        <option value="$PROJECT_DIR$/public/stylesheets/style.css" />
         <option value="$PROJECT_DIR$/public/javascripts/index.js" />
       </list>
     </option>
@@ -242,6 +253,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="images" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SemanticGraphBrowser" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SemanticGraphBrowser" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="node_modules" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -257,6 +286,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Sashe\playWorkspace\SemanticGraphBrowser\public\images" />
       <recent name="C:\Users\Sashe\playWorkspace\SemanticGraphBrowser\public\javascripts" />
       <recent name="C:\Users\Sashe\playWorkspace\SemanticGraphBrowser\public" />
       <recent name="C:\Users\Sashe\playWorkspace\SemanticGraphBrowser\routes" />
@@ -306,12 +336,12 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24944155" sideWeight="0.6712329" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24944155" sideWeight="0.6712329" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
@@ -431,46 +461,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/Controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="94" selection-start="701" selection-end="701" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/rdfstore/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="24747" column="22" selection-start="808020" selection-end="808020" vertical-scroll-proportion="4.0934844">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="34" selection-start="720" selection-end="720" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/miserables.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="37" selection-start="193" selection-end="193" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#0#155#0" expanded="false" />
-            <element signature="e#206#3285#0" expanded="false" />
-            <element signature="e#3299#14725#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/index.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="31" selection-start="2462" selection-end="2462" vertical-scroll-proportion="-2.2307692">
-          <folding>
-            <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -481,19 +475,52 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="85" column="38" selection-start="2407" selection-end="2833" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/miserables.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="90" column="41" selection-start="3309" selection-end="3342" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#0#155#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/Controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="86" column="72" selection-start="3621" selection-end="3621" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#1103#2369#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/public/stylesheets/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="24" selection-start="215" selection-end="215" vertical-scroll-proportion="0.0">
+        <state line="44" column="23" selection-start="582" selection-end="582" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/index.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="80" column="66" selection-start="5219" selection-end="5219" vertical-scroll-proportion="-5.3846154">
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/javascripts/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="30" selection-start="1711" selection-end="1711" vertical-scroll-proportion="0.3715847">
-          <folding>
-            <element signature="e#227#953#0" expanded="false" />
-          </folding>
+        <state line="83" column="26" selection-start="2276" selection-end="2276" vertical-scroll-proportion="0.55737704">
+          <folding />
         </state>
       </provider>
     </entry>
