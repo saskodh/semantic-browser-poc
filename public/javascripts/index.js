@@ -1,3 +1,5 @@
+var visPanel = null;
+
 /**
  * Created with JetBrains WebStorm.
  * User: sasko
@@ -6,19 +8,37 @@
  * To change this template use File | Settings | File Templates.
  */
 var loader = null;
+var infoPanel = null;
+var loaderImg = null;
 
-$(document).ready(function(){
+var graphData = null;
 
-    var visPanel = $("#visualization .panel-body");
-    loader = $('#loader');
-    var loaderImg = $('#loader img');
+function resize(){
+    var dy = $(window).height() - $('body').height();
+    visPanel.height(visPanel.height() + dy -25);
+    infoPanel.height(infoPanel.height() + dy -25);
+
     var top = visPanel.height()/2 - loaderImg.height()/2;
     var left = visPanel.width()/2 - loaderImg.width()/2;
     loaderImg.css('top', Math.round(top) + 'px');
     loaderImg.css('left', Math.round(left) + 'px');
 
-    d3.json("miserables.json", function(error, graph){
+    //redraw the graph
+    drawGraph(graphData);
+}
 
+$(document).ready(function(){
+    visPanel = $("#visualization .panel-body");
+    infoPanel = $('#info .panel-body');
+    loaderImg = $('#loader img');
+    loader = $('#loader');
+
+    //resize to match the window height
+    resize();
+    $( window ).resize(resize);
+
+    d3.json("miserables.json", function(error, graph){
+        graphData = graph;
         loader.hide();
         drawGraph(graph);
     });
@@ -31,6 +51,7 @@ $(document).ready(function(){
         //this should be replaced with jsonp ajax call
         $.get("/resource?uri=" + resURI, function(data){
             console.log(data);
+            graphData = data;
             loader.hide();
             drawGraph(data);
         });
@@ -44,6 +65,9 @@ $(document).ready(function(){
 });
 
 function drawGraph(graph){
+    if(!graph)
+        return;
+
     var visPanel = $("#visualization .panel-body");
     var width = visPanel.width(),
         height = visPanel.height();
@@ -59,7 +83,19 @@ function drawGraph(graph){
 
     var svg = d3.select("#visualization .panel-body").append("svg")
         .attr("width", width)
-        .attr("height", height);
+        .attr("height", height)
+        .append('svg:g')
+        .call(d3.behavior.zoom().on("zoom", redraw))
+        .append('svg:g');
+
+    function redraw() {
+        //console.log("here", d3.event.translate, d3.event.scale);
+        //console.log(svg);
+        svg.attr("transform",
+            "translate(" + d3.event.translate + ")"
+                + " scale(" + d3.event.scale + ")");
+    }
+
     var color = d3.scale.category20();
 
     force
@@ -82,7 +118,10 @@ function drawGraph(graph){
         .call(force.drag);
 
     node.on("dblclick", function (d) {
-        console.log("double click");
+        //console.log("double click");
+        if(d.group == 'property')
+            return;
+
         loader.show();
 
         $.get("/resource?uri=" + d.name, function(data){
@@ -139,4 +178,3 @@ function createLiteralTemplate(name, value){
 
     return result.append(span).append(p);
 }
-

@@ -62,11 +62,12 @@ Controller.resource = function(req, res){
                             var nodes = [];
                             var links = [];
                             var literals = [];
+                            var resourcePropsHash = {};
 
                             var mainNode = {
                                 name: req.query.uri,
                                 attributes: results,
-                                group: 0
+                                group: "main"
                             };
                             nodes.push(mainNode);
 
@@ -81,13 +82,18 @@ Controller.resource = function(req, res){
                                 }
 
                                 if('uri' == results[i].object.token){
-                                    var node = {
+                                    if(!resourcePropsHash[results[i].property.value]){
+                                        resourcePropsHash[results[i].property.value] = [];
+                                    }
+                                    resourcePropsHash[results[i].property.value].push(results[i].object.value);
+
+                                    /*var propNode = {
                                         name: results[i].object.value,
                                         attributes: false,
                                         group: results[i].property.value
                                     };
 
-                                    nodes.push(node);
+                                    nodes.push(propNode);
 
                                     var link = {
                                         "source": 0,
@@ -95,7 +101,47 @@ Controller.resource = function(req, res){
                                         "value": 10,
                                         name: results[i].property.value
                                     }
+                                    links.push(link);*/
+                                }
+                            }
+
+                            for(var prop in resourcePropsHash){
+                                if(resourcePropsHash.hasOwnProperty(prop)){
+                                    //push the propNode
+                                    var propNode = {
+                                        name: prop,
+                                        attributes: false,
+                                        group: "property"
+                                    };
+                                    nodes.push(propNode);
+                                    var propIndex = nodes.length-1;
+
+                                    var link = {
+                                        "source": 0,
+                                        "target": propIndex,
+                                        "value": 10,
+                                        name: prop
+                                    }
                                     links.push(link);
+
+                                    //push the nodes linked with that property
+                                    for(var i=0; i<resourcePropsHash[prop].length; i++){
+                                        var node = {
+                                            name: resourcePropsHash[prop][i],
+                                            attributes: false,
+                                            group: prop
+                                        };
+                                        nodes.push(node);
+
+                                        var link = {
+                                            "source": propIndex,
+                                            "target": nodes.length-1,
+                                            "value": 10,
+                                            name: prop
+                                        }
+                                        links.push(link);
+                                    }
+
                                 }
                             }
 
