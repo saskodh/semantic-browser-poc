@@ -57,7 +57,7 @@ Controller.resource = function(req, res){
                             ]
                             *
                             * */
-                            console.log(results);
+                            //console.log(results);
 
                             var nodes = [];
                             var links = [];
@@ -143,6 +143,10 @@ Controller.resource = function(req, res){
                                     }
 
                                 }
+                            }
+
+                            if(resourcePropsHash['http://dbpedia.org/ontology/thumbnail']){
+                                nodes[0].image = resourcePropsHash['http://dbpedia.org/ontology/thumbnail'];
                             }
 
                             //return the response

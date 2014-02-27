@@ -10,8 +10,10 @@ var visPanel = null;
 var loader = null;
 var infoPanel = null;
 var loaderImg = null;
+var btnBack = null;
 
 var graphData = null;
+var navigator = [''];
 
 function resize(){
     var dy = $(window).height() - $('body').height();
@@ -23,6 +25,8 @@ function resize(){
     loaderImg.css('top', Math.round(top) + 'px');
     loaderImg.css('left', Math.round(left) + 'px');
 
+    $('#btnBack').height($('#txtFields').height() - 45);
+
     //redraw the graph
     drawGraph(graphData);
 }
@@ -32,7 +36,9 @@ $(document).ready(function(){
     infoPanel = $('#info .panel-body');
     loaderImg = $('#loader img');
     loader = $('#loader');
+    btnBack = $('#btnBack');
 
+    btnBack.prop('disabled', true);
     //resize to match the window height
     resize();
     $( window ).resize(resize);
@@ -48,18 +54,47 @@ $(document).ready(function(){
         var resURI = $('#txtResourceUri').val();
 
         loader.show();
-        //this should be replaced with jsonp ajax call
-        $.get("/resource?uri=" + resURI, function(data){
-            console.log(data);
-            graphData = data;
-            loader.hide();
-            drawGraph(data);
-        });
+
+        if(resURI == ''){
+            d3.json("miserables.json", function(error, graph){
+                $('#txtResourceUri').val('');
+                graphData = graph;
+                loader.hide();
+                drawGraph(graph);
+            });
+        }else {
+            $.get("/resource?uri=" + resURI, function(data){
+                //console.log(data);
+                $('#txtResourceUri').val(resURI);
+                graphData = data;
+                loader.hide();
+                drawGraph(data);
+            });
+
+            btnBack.prop('disabled', false);
+        }
+        navigator.push(resURI);
+        //console.log(navigator);
     });
 
     $('#txtResourceUri').keydown(function(event){
         if(event.keyCode==13){
             $('#btnResourceURI').trigger('click');
+        }
+    });
+
+    btnBack.click(function(){
+//        console.log('back button click');
+//        console.log(navigator);
+
+        if(navigator.length > 1){
+            $('#txtResourceUri').val(navigator[navigator.length-2]);
+            navigator.pop();
+            navigator.pop();
+            $('#btnResourceURI').trigger('click');
+            if(navigator.length == 1){
+                btnBack.prop('disabled', true);
+            }
         }
     });
 });
@@ -113,28 +148,41 @@ function drawGraph(graph){
         .data(graph.nodes)
         .enter().append("circle")
         .attr("class", "node")
-        .attr("r", 10)
+        .attr("r", function(d){
+            if(d.group == 'main')
+                return 20;
+            return 10;
+        })
         .style("fill", function(d) { return color(d.group); })
         .call(force.drag);
 
     node.on("dblclick", function (d) {
         //console.log("double click");
-        if(d.group == 'property')
+        if(d.group == 'property' || d.group == 'main')
             return;
 
         loader.show();
 
-        $.get("/resource?uri=" + d.name, function(data){
-            console.log(data);
-            loader.hide();
-            drawGraph(data);
-        });
+        $('#txtResourceUri').val(d.name);
+        $('#btnResourceURI').trigger('click');
     });
 
     node.on("click", function (d) {
-        console.log("single click: ");
-        console.log(d);
+        //console.log("single click: ");
+        //console.log(d);
     });
+
+    svg.select(".node")
+        .append("svg:image")
+        .attr("xlink:href", function (d) {
+            if(d.image)
+                return d.image;
+            return "./public/images/noimg.jpg";
+        })
+        .attr("x", "-12px")
+        .attr("y", "-12px")
+        .attr("width", "24px")
+        .attr("height", "24px");
 
     node.append("text")
         .attr("dy", "4")
@@ -143,7 +191,6 @@ function drawGraph(graph){
         .text(function (d) {
             return d.name;
         });
-
 
     node.append("title")
         .text(function(d) { return d.name; });
