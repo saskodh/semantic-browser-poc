@@ -1,0 +1,10 @@
+.link {
+  stroke: #ccc;
+}
+
+.text {
+  pointer-events: none;
+  font: 14px sans-serif;
+  fill: #666;
+  stroke: none;
+  opacity: 0;
