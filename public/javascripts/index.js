@@ -97,7 +97,39 @@ $(document).ready(function(){
             }
         }
     });
+
+
+    var endpoints = new Bloodhound({
+        datumTokenizer: function(endpoint) {
+            var array = Bloodhound.tokenizers.whitespace(endpoint.name);
+            array.push(endpoint.location);
+
+            return array;
+        },
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        prefetch: '../public/endpoints.json',
+        limit: 5
+    });
+
+    endpoints.initialize();
+
+    $('#txtGraphUri').typeahead(null, {
+        displayKey: function(endpoint){return endpoint.location;},
+        source: endpoints.ttAdapter(),
+        templates: {
+            suggestion: function(endpoint){
+                //console.log(endpoint);
+                return '<p class="endpointName">'+ endpoint.name +'</p>'+
+                '<p class="endpointLocation">'+ endpoint.location +'</p>';
+            }
+        }
+    });
+
 });
+
+function log(data){
+    console.log(data);
+}
 
 function drawGraph(graph){
     if(!graph)
@@ -176,7 +208,7 @@ function drawGraph(graph){
         .append("svg:image")
         .attr("xlink:href", function (d) {
             if(d.image)
-                return d.image;
+                return d.image[0];
             return "./public/images/noimg.jpg";
         })
         .attr("x", "-12px")

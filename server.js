@@ -31,6 +31,7 @@ if ('development' == app.get('env')) {
 
 app.get('/', Controller.indexGet);
 app.get('/resource', Controller.resource);
+app.get('/query', Controller.query);
 app.get('/rdftranslator', Controller.rdftranslator);
 app.get('/miserables.json', function(req, res){
     var miserables = require('./routes/miserables');

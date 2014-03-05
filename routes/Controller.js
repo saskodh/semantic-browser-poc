@@ -42,7 +42,7 @@ Controller.resource = function(req, res){
                                      },
                                      object: {
                                      token: 'uri',
-                                     value: 'http://dbpedia.org/resource/Category:Fellows_of_the_American_Academy_of_Arts_and_Sciences'
+                                     value: 'http://dbpedia.org/resource/Category:Fellows_of_the_American_Academy'
                                      }
                                      },
                                      {
@@ -192,15 +192,54 @@ Controller.resource = function(req, res){
     }
 }
 
-Controller.resourcefetch = function(request, response){
-    if(request.params.resource){
+Controller.query = function(request, response){
+    var endpoint = request.query.endpoint;
+    var keyword = request.query.keyword;
 
-        unirest.get(request.params.resource)
-            .headers({ 'Accept': 'application/rdf+json' })
+    //console.log(endpoint);
+    //console.log(keyword);
+
+    if(endpoint && keyword){
+
+        var query = 'SELECT distinct ?subject WHERE {?subject <http://www.w3.org/2000/01/rdf-schema#label> ?object .' +
+            '?object bif:contains "\'' + keyword + '\'"} limit 100';
+
+        //console.log(query);
+
+        var path = endpoint;
+        path += '?query=' + query;
+        path += '&format=application/sparql-results+json';
+        path += '&timeout=3000';
+
+        //console.log(path);
+
+        path = encodeURI(path);
+        //console.log(path);
+
+        //doesn't work with path
+        var location = endpoint + "?query=SELECT+distinct+%3Fsubject+WHERE+%7B%3Fsubject+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23label%3E+%3Fobject+.+%3Fobject+bif%3Acontains+%22%27"+ keyword +"%27%22%7D+limit+20%0D%0A&format=application%2Fsparql-results%2Bjson&timeout=5000";
+
+        //console.log(location);
+
+        unirest.get(location)
+            //.headers({ 'Accept': 'application/rdf+json' })
             .end(function (res) {
-                response.writeHead(200);
-                response.end(res.body);
+                console.log(res);
+                var result = [];
+                try{
+                    var data = JSON.parse(res.body);
+                    //var data = res.body;
+                    for(var i=0; i<data.results.bindings.length; i++){
+                        result.push(data.results.bindings[i].subject.value);
+                    }
+                }catch(e){
+                    console.log(e);
+                }
+                response.json(result);
             });
+    }else {
+        response.writeHead(200);
+        response.end("You must provide endpoint and keyword as query string parametars!");
     }
 }
 
