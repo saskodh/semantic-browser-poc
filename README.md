@@ -1,4 +1,6 @@
-DEPRECATED: The project was reworked from scratch. Check <a href="https://github.com/saskodh/semantic-browser">this</a> repository.
+# Semantic Graph Browser (DEPRECATED)
+The project was reworked from scratch. Check <a href="https://github.com/saskodh/semantic-browser">this</a> repository.
+<hr/>
 
 The Semantic Graph Browser aims to provide a nice visualization of a given semantic resource(e.g. http://dbpedia.org/resource/Tim_Berners-Lee) with the ability to go back and forth through the connected resources.
 
